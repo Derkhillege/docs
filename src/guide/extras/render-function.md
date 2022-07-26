@@ -26,6 +26,17 @@ const vnode = h(
 )
 ```
 
+The resulting vnode has the following shape:
+
+```js
+const vnode = h('div', { id: 'foo' }, [])
+
+vnode.type // 'div'
+vnode.props // { id: 'foo' }
+vnode.children // []
+vnode.key // null
+```
+
 `h()` is short for **hyperscript** - which means "JavaScript that produces HTML (hypertext markup language)". This name is inherited from conventions shared by many virtual DOM implementations. A more descriptive name could be `createVnode()`, but a shorter name helps when you have to call this function many times in a render function.
 
 The `h()` function is designed to be very flexible:
@@ -59,17 +70,6 @@ h('div', [h('span', 'hello')])
 
 // children array can contain mixed vnodes and strings
 h('div', ['hello', h('span', 'hello')])
-```
-
-The resulting vnode has the following shape:
-
-```js
-const vnode = h('div', { id: 'foo' }, [])
-
-vnode.type // 'div'
-vnode.props // { id: 'foo' }
-vnode.children // []
-vnode.key // null
 ```
 
 :::warning Note
